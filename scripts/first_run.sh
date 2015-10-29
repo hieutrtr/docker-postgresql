@@ -38,7 +38,7 @@ EOF
     for db in $DB; do
       echo "Creating database: $DB"
       su - postgres -c psql <<-EOF
-      create database $USER with OWNER $USER TEMPLATE template0 ENCODING 'UTF8';
+      create database $DB with OWNER $USER TEMPLATE template0 ENCODING 'UTF8';
       CREATE SCHEMA AUTHORIZATION $USER;
 EOF
     done
