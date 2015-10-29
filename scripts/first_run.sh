@@ -35,11 +35,10 @@ EOF
 
   # create database if requested
   if [ ! -z "$DB" ]; then
-    for db in $DB; do
-      echo "Creating database: $DB"
-      su - postgres -c psql <<-EOF
-      create database $USER with OWNER $USER TEMPLATE template0 ENCODING 'UTF8';
-      CREATE SCHEMA AUTHORIZATION $USER;
+    echo "Creating database: $DB"
+    su - postgres -c psql <<-EOF
+    create database $DB with OWNER $USER TEMPLATE template0 ENCODING 'UTF8';
+    CREATE SCHEMA AUTHORIZATION $USER;
 EOF
     done
   fi
